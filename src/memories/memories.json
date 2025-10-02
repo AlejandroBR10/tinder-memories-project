@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "nombre": "RAM",
+    "caracteristicas": [],
+    "capacidades": "",
+    "usos": "",
+    "otros": "",
+    "imagen": "ram.png",
+    "asignado": "Alan"
+  },
+  {
+    "id": 2,
+    "nombre": "RDRAM",
+    "caracteristicas": [],
+    "capacidades": "",
+    "usos": "",
+    "otros": "",
+    "imagen": "rdram.png",
+    "asignado": "Alan"
+  },
+  {
+    "id": 3,
+    "nombre": "EEPROM",
+    "caracteristicas": [],
+    "capacidades": "",
+    "usos": "",
+    "otros": "",
+    "imagen": "eeprom.png",
+    "asignado": "Alan"
+  },
+  {
+    "id": 4,
+    "nombre": "DRAM",
+    "caracteristicas": [],
+    "capacidades": "",
+    "usos": "",
+    "otros": "",
+    "imagen": "dram.png",
+    "asignado": "Ale"
+  },
+  {
+    "id": 5,
+    "nombre": "SRAM",
+    "caracteristicas": [],
+    "capacidades": "",
+    "usos": "",
+    "otros": "",
+    "imagen": "sram.png",
+    "asignado": "Ale"
+  },
+  {
+    "id": 6,
+    "nombre": "CMOS",
+    "caracteristicas": [],
+    "capacidades": "",
+    "usos": "",
+    "otros": "",
+    "imagen": "cmos.png",
+    "asignado": "Ale"
+  },
+  {
+    "id": 7,
+    "nombre": "SDRAM",
+    "caracteristicas": [],
+    "capacidades": "",
+    "usos": "",
+    "otros": "",
+    "imagen": "sdram.png",
+    "asignado": "Ian"
+  },
+  {
+    "id": 8,
+    "nombre": "DDR SDRAM",
+    "caracteristicas": [],
+    "capacidades": "",
+    "usos": "",
+    "otros": "",
+    "imagen": "ddr_sdram.png",
+    "asignado": "Ian"
+  },
+  {
+    "id": 9,
+    "nombre": "ROM",
+    "caracteristicas": [],
+    "capacidades": "",
+    "usos": "",
+    "otros": "",
+    "imagen": "rom.png",
+    "asignado": "Roberto"
+  },
+  {
+    "id": 10,
+    "nombre": "CACHE",
+    "caracteristicas": [],
+    "capacidades": "",
+    "usos": "",
+    "otros": "",
+    "imagen": "cache.png",
+    "asignado": "Roberto"
+  }
+]

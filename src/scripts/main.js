@@ -1,19 +1,38 @@
-const users = [
-  {
-    id: 1,
-    name: 'John Doe',
-    image: 'src/assets/images/foto1.jpeg',
-  },
-  {
-    id: 2,
-    name: 'Jane Smith',
-    image: 'src/assets/images/foto1.jpeg',
-  },
-  // Add more user profiles as needed
-];
-
+let users = [];
 const cardContainer = document.querySelector('.card-container');
 let currentIndex = 0;
+
+// Modal
+const modal = document.createElement('div');
+modal.className = 'user-modal';
+modal.innerHTML = `
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <img class="modal-img" src="" alt="">
+    <h2 class="modal-name"></h2>
+    <p class="modal-characteristics"></p>
+    <p class="modal-food"></p>
+  </div>
+`;
+document.body.appendChild(modal);
+
+function showModal(user) {
+  modal.querySelector('.modal-img').src = user.image;
+  modal.querySelector('.modal-name').textContent = user.name;
+  modal.querySelector('.modal-characteristics').textContent = `Características: ${user.characteristics}`;
+  modal.querySelector('.modal-food').textContent = `Comida favorita: ${user.food}`;
+  modal.classList.add('show');
+}
+
+modal.querySelector('.close-btn').onclick = () => {
+  modal.classList.remove('show');
+};
+
+async function loadUsers() {
+  const res = await fetch('src/memories/memories.json');
+  users = await res.json();
+  showCard(currentIndex);
+}
 
 function showCard(index) {
   cardContainer.innerHTML = '';
@@ -44,17 +63,22 @@ function showCard(index) {
   likeBtn.className = 'action-btn like';
   likeBtn.innerHTML = '❤';
 
+  const infoBtn = document.createElement('button');
+  infoBtn.className = 'action-btn info';
+  infoBtn.innerHTML = '<span class="info-icon">ℹ️</span>';
+
   actions.appendChild(dislikeBtn);
   actions.appendChild(likeBtn);
+  actions.appendChild(infoBtn);
 
   card.appendChild(img);
   card.appendChild(name);
   card.appendChild(actions);
   cardContainer.appendChild(card);
 
-  // Button actions
   likeBtn.onclick = () => swipeCard(card, 'right');
   dislikeBtn.onclick = () => swipeCard(card, 'left');
+  infoBtn.onclick = () => showModal(user);
 
   // Drag/swipe functionality
   let startX = 0, currentX = 0, isDragging = false;
@@ -107,4 +131,4 @@ function swipeCard(card, direction) {
   }, 350);
 }
 
-showCard(currentIndex);
+loadUsers();
