@@ -32,31 +32,43 @@
   {
     "id": 4,
     "nombre": "DRAM",
-    "caracteristicas": [],
-    "capacidades": "",
-    "usos": "",
-    "otros": "",
-    "imagen": "dram.png",
+      "caracteristicas": [
+      "Memoria dinámica que necesita refresco constante",
+      "Acceso aleatorio",
+      "Mayor densidad que SRAM pero más lenta"
+    ],
+    "capacidades": "Desde 1MB hasta varios GB por chip",
+    "usos": "Memoria principal en PCs, laptops y servidores",
+    "otros": "Es más barata que SRAM y se usa en la mayoría de computadoras",
+    "imagen": "src/images/.png",
     "asignado": "Ale"
   },
   {
     "id": 5,
     "nombre": "SRAM",
-    "caracteristicas": [],
-    "capacidades": "",
-    "usos": "",
-    "otros": "",
+   "caracteristicas": [
+      "Memoria estática, no requiere refresco",
+      "Muy rápida pero costosa",
+      "Menor densidad que DRAM"
+    ],
+    "capacidades": "Desde KB hasta varios MB por chip",
+    "usos": "Caché de CPU, memoria de alta velocidad en routers y dispositivos integrados",
+    "otros": "Se utiliza donde se necesita rapidez y baja latencia",
     "imagen": "sram.png",
     "asignado": "Ale"
   },
   {
     "id": 6,
     "nombre": "CMOS",
-    "caracteristicas": [],
-    "capacidades": "",
-    "usos": "",
-    "otros": "",
-    "imagen": "cmos.png",
+    "caracteristicas": [
+      "Memoria de bajo consumo",
+      "Tecnología semiconductor complementaria",
+      "Mantiene información con batería"
+    ],
+    "capacidades": "Muy limitada, suficiente para configuración de BIOS",
+    "usos": "Almacena fecha, hora y configuración de la BIOS en computadoras",
+    "otros": "No es volátil gracias a la batería que la alimenta",
+    "imagen": "src/assets/images/cmos.png",
     "asignado": "Ale"
   },
   {

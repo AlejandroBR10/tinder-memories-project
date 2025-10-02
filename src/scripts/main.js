@@ -1,4 +1,4 @@
-let users = [];
+let memories = [];
 const cardContainer = document.querySelector('.card-container');
 let currentIndex = 0;
 
@@ -11,16 +11,29 @@ modal.innerHTML = `
     <img class="modal-img" src="" alt="">
     <h2 class="modal-name"></h2>
     <p class="modal-characteristics"></p>
-    <p class="modal-food"></p>
+    <p class="modal-capacities"></p>
+    <p class="modal-uses"></p>
+    <p class="modal-others"></p>
+    <p class="modal-assigned"></p>
   </div>
 `;
 document.body.appendChild(modal);
 
-function showModal(user) {
-  modal.querySelector('.modal-img').src = user.image;
-  modal.querySelector('.modal-name').textContent = user.name;
-  modal.querySelector('.modal-characteristics').textContent = `Características: ${user.characteristics}`;
-  modal.querySelector('.modal-food').textContent = `Comida favorita: ${user.food}`;
+function showModal(memory) {
+  modal.querySelector('.modal-img').src = memory.imagen;
+  modal.querySelector('.modal-name').textContent = memory.nombre;
+  modal.querySelector('.modal-characteristics').textContent =
+    memory.caracteristicas && memory.caracteristicas.length
+      ? `Características: ${memory.caracteristicas.join(', ')}`
+      : '';
+  modal.querySelector('.modal-capacities').textContent =
+    memory.capacidades ? `Capacidades: ${memory.capacidades}` : '';
+  modal.querySelector('.modal-uses').textContent =
+    memory.usos ? `Usos: ${memory.usos}` : '';
+  modal.querySelector('.modal-others').textContent =
+    memory.otros ? `Otros: ${memory.otros}` : '';
+  modal.querySelector('.modal-assigned').textContent =
+    memory.asignado ? `Asignado a: ${memory.asignado}` : '';
   modal.classList.add('show');
 }
 
@@ -28,29 +41,36 @@ modal.querySelector('.close-btn').onclick = () => {
   modal.classList.remove('show');
 };
 
-async function loadUsers() {
+async function loadMemories() {
   const res = await fetch('src/memories/memories.json');
-  users = await res.json();
+  memories = await res.json();
   showCard(currentIndex);
 }
 
 function showCard(index) {
   cardContainer.innerHTML = '';
-  if (index >= users.length) {
+  if (index >= memories.length) {
     cardContainer.innerHTML = '<h2>No more profiles!</h2>';
     return;
   }
 
-  const user = users[index];
+  const memory = memories[index];
   const card = document.createElement('div');
   card.classList.add('user-card');
 
   const img = document.createElement('img');
-  img.src = user.image;
-  img.alt = user.name;
+  img.src = memory.imagen;
+  img.alt = memory.nombre;
 
   const name = document.createElement('h2');
-  name.textContent = user.name;
+  name.textContent = memory.nombre;
+
+  // Características resumidas en la carta
+  const characteristics = document.createElement('p');
+  characteristics.className = 'card-characteristics';
+  if (memory.caracteristicas && memory.caracteristicas.length) {
+    characteristics.textContent = memory.caracteristicas.slice(0, 2).join(', ');
+  }
 
   const actions = document.createElement('div');
   actions.className = 'card-actions';
@@ -73,12 +93,13 @@ function showCard(index) {
 
   card.appendChild(img);
   card.appendChild(name);
+  if (characteristics.textContent) card.appendChild(characteristics);
   card.appendChild(actions);
   cardContainer.appendChild(card);
 
   likeBtn.onclick = () => swipeCard(card, 'right');
   dislikeBtn.onclick = () => swipeCard(card, 'left');
-  infoBtn.onclick = () => showModal(user);
+  infoBtn.onclick = () => showModal(memory);
 
   // Drag/swipe functionality
   let startX = 0, currentX = 0, isDragging = false;
@@ -131,4 +152,4 @@ function swipeCard(card, direction) {
   }, 350);
 }
 
-loadUsers();
+loadMemories();
