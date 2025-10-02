@@ -72,26 +72,34 @@
     "asignado": "Ale"
   },
   {
-    "id": 7,
-    "nombre": "SDRAM",
-    "caracteristicas": [],
-    "capacidades": "",
-    "usos": "",
-    "otros": "",
-    "imagen": "sdram.png",
-    "asignado": "Ian"
+  "id": 7,
+  "nombre": "SDRAM",
+  "caracteristicas": [
+    "Memoria síncrona que funciona en sincronía con el reloj del sistema",
+    "Permite múltiples operaciones en ráfaga (burst mode)",
+    "Latencias moderadas en comparación con tecnologías posteriores",
+    "Uso de bancos internos para procesar múltiples solicitudes"],
+  "capacidades": "Generalmente entre 16 MB y 512 MB por módulo",
+  "usos": "Computadoras de escritorio y portátiles de finales de los 90 e inicios de los 2000, tarjetas gráficas antiguas y dispositivos embebidos",
+  "otros": "Fue el reemplazo directo de la memoria EDO RAM; opera típicamente a 66, 100 o 133 MHz (PC66, PC100, PC133)",
+  "imagen": "src/assets/images/SDRAM.png",
+  "asignado": "Ian"
   },
   {
-    "id": 8,
-    "nombre": "DDR SDRAM",
-    "caracteristicas": [],
-    "capacidades": "",
-    "usos": "",
-    "otros": "",
-    "imagen": "ddr_sdram.png",
-    "asignado": "Ian"
-  },
-  {
+  "id": 8,
+  "nombre": "DDR SDRAM",
+  "caracteristicas": [
+    "Transfiere datos en los flancos ascendentes y descendentes del reloj (doble velocidad)",
+    "Mayor ancho de banda que SDRAM tradicional",
+    "Menor voltaje de operación (2.5V aprox.)",
+    "Disponible en versiones DDR, DDR2, DDR3, DDR4 y DDR5"],
+  "capacidades": "Desde 256 MB hasta 4 GB por módulo en primeras generaciones",
+  "usos": "Memoria principal en computadoras de escritorio, laptops, consolas de videojuegos y servidores desde principios de los 2000 hasta la actualidad (en sus versiones más modernas)",
+  "otros": "Las versiones modernas (DDR4 y DDR5) incluyen corrección de errores, mayor densidad y eficiencia energética",
+  "imagen": "src/assets/images/DDR_SDRAM.png",
+  "asignado": "Ian"
+},
+{
     "id": 9,
     "nombre": "ROM",
     "caracteristicas": [],
