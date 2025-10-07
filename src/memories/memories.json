@@ -120,21 +120,29 @@
 {
     "id": 9,
     "nombre": "ROM",
-    "caracteristicas": [],
-    "capacidades": "",
-    "usos": "",
-    "otros": "",
-    "imagen": "rom.png",
+    "caracteristicas": [
+      "Conserva la información sin energía",
+      "Contiene instrucciones necesarias para iniciar el sistema",
+      "Es de solo lectura"
+    ],
+    "capacidades": "Desde KB hasta unos pocos MB",
+    "usos": "Almacenar firmware y guardar información que no debe modificarse fácilmente",
+    "otros": "PROM, EPROM, EEPROM, Flash ROM",
+    "imagen": "src/assets/images/rom.png",
     "asignado": "Roberto"
   },
   {
     "id": 10,
     "nombre": "CACHE",
-    "caracteristicas": [],
-    "capacidades": "",
-    "usos": "",
-    "otros": "",
-    "imagen": "cache.png",
+    "caracteristicas": [
+      "Altísima velocidad",
+      "Pierde la información al apagarse",
+      "Reduce la latencia en el acceso a datos"
+    ],
+    "capacidades": "Desde KB (L1) hasta varios MB (L3)",
+    "usos": "Almacenar instrucciones y datos que el CPU necesita de manera inmediata, lo que optimiza la ejecución de programas",
+    "otros": "Se divide en L1, L2, L3",
+    "imagen": "src/assets/images/cache.png",
     "asignado": "Roberto"
   }
 ]
