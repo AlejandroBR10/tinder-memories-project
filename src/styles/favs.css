@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #ff6a6a 0%, #ff8a5c 50%, #ffb86c 100%);
+  background: linear-gradient(120deg, #fdf1e6 0%, #ffe0c2 100%);
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -283,7 +283,17 @@ body {
 }
 
 /* Footer separado y elegante */
-
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #ff6a6a 0%, #ffb86c 100%);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 24px 24px 0 0;
+}
 
 /* Responsive */
 @media (max-width: 950px) {
@@ -351,14 +361,3 @@ body {
     padding: 0.5rem;
   }
 }
-/* Footer separado y elegante */
-/* Footer separado y elegante */
-footer {
-  background: #ff6a6a;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  border-radius: 24px 24px 0 0;
-}
-

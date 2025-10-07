@@ -32,8 +32,7 @@ function showModal(memory) {
     memory.usos ? `Usos: ${memory.usos}` : '';
   modal.querySelector('.modal-others').textContent =
     memory.otros ? `Otros: ${memory.otros}` : '';
-  modal.querySelector('.modal-assigned').textContent =
-    memory.asignado ? `Asignado a: ${memory.asignado}` : '';
+  
   modal.classList.add('show');
 }
 
@@ -115,7 +114,7 @@ function addToFavorites(memory) {
 function showCard(index) {
   cardContainer.innerHTML = '';
   if (index >= memories.length) {
-    cardContainer.innerHTML = '<h2>No more profiles!</h2>';
+    cardContainer.innerHTML = '<h2>No hay mas perfiles!</h2>';
     return;
   }
 
