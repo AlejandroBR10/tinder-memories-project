@@ -1,0 +1,97 @@
+:root {
+    --rojo: #ff6a6a;
+    --naranja: #ffb86c;
+    --blanco: #ffffff;
+}
+
+.boton {
+    background-color: var(--rojo);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+@media (min-width: 768px) {
+    .boton {
+        width: auto;
+    }
+}
+.boton:hover {
+    cursor: pointer;
+    background-color: var(--naranja);
+}
+
+/* Tipografia */
+h2 {
+    font-size: 9.6rem;
+}
+
+h3{
+    font-size: 3.8rem;
+}
+
+h1,h2,h3 {
+    text-align: center;
+}
+
+/** Utilidades **/
+.w-sm-100 {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+.flex {
+    display: flex;
+}
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+/* Hero */
+.hero {
+    background-image: url(/src/assets/images/hero.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 900px;
+    position: relative;
+}
+.contenido-hero {
+    position: absolute;
+    background-color: rgb( 0 0 0 / 70% );
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.contenido-hero h2,
+.contenido-hero h3{
+    margin: 0;
+}
+.contenido-hero h2, 
+.contenido-hero p {
+    color: var(--rojo);
+}
+.contenido-hero h3{
+    color: var(--blanco);
+}
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+
+footer{
+    margin-top: 0;
+}
