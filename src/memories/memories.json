@@ -115,7 +115,7 @@
   "usos": "Memoria principal en computadoras de escritorio, laptops, consolas de videojuegos y servidores desde principios de los 2000 hasta la actualidad (en sus versiones más modernas)",
   "otros": "Las versiones modernas (DDR4 y DDR5) incluyen corrección de errores, mayor densidad y eficiencia energética",
   "imagen": "src/assets/images/DDR_SDRAM.png",
-  "asignado": "Ian"
+  "asignado": "Ian" 
 },
 {
     "id": 9,
