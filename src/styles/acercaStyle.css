@@ -1,0 +1,222 @@
+body {
+  background: linear-gradient(120deg, #fdf1e6 0%, #ffe0c2 100%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.about-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 120px auto 40px auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.about-info, .about-contact, .about-team {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  padding: 2rem;
+  flex: 1 1 350px;
+  min-width: 350px;
+  max-width: 500px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.about-info:hover, .about-contact:hover, .about-team:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.15);
+}
+
+.about-logo {
+  font-size: 3.5rem;
+  margin-bottom: 1.2rem;
+  color: #ff6a6a;
+  text-align: left;
+  filter: drop-shadow(0 2px 8px #ffb86c88);
+}
+
+.about-title {
+  font-size: 2rem;
+  color: #ff6a6a;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.about-list {
+  margin: 0 auto;
+  padding-left: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.about-list li {
+  font-size: 1rem;
+  color: #ff6a6a;
+  margin-bottom: 0.7rem;
+  background: #fff8f2;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(255,106,106,0.06);
+}
+
+/* Contacto y soporte */
+.about-contact {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about-contact:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 36px rgba(255,106,106,0.15);
+}
+
+.about-contact h2 {
+    font-size: 2rem;
+    color: #ff6a6a;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.contact-container {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.contact-email {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #ff6a6a;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-email:hover {
+    color: #ffb86c;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.social-link {
+    font-size: 1.1rem;
+    color: #ff6a6a;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.social-link:hover {
+    color: #ffb86c;
+}
+
+.contact-footer {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 1rem;
+}
+
+/* Imagen al final de la sección */
+.contact-image-container {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.contact-image {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* Logo del equipo */
+.team-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.team-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(120deg, #ff6a6a 0%, #ffe0c2 100%);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border: 4px solid #ffb86c;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 36px rgba(255,106,106,0.15);
+}
+
+/* Texto del equipo */
+.about-team {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.about-team span {
+    color: #ff6a6a;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.about-team p {
+    margin-top: 0.5rem;
+}
+
+footer {
+  background: #ff6a6a;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 24px 24px 0 0;
+}
+
+@media (max-width: 900px) {
+  .about-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .about-info, .about-contact, .about-team {
+    max-width: 95vw;
+  }
+}

@@ -19,21 +19,66 @@ modal.innerHTML = `
 `;
 document.body.appendChild(modal);
 
+function showCard(index) {
+  if (index >= memories.length) {
+    cardContainer.innerHTML = `<p class="no-more-cards">No hay más perfiles disponibles</p>`;
+    return;
+  }
+
+  const memory = memories[index];
+  const card = document.createElement('div');
+  card.className = 'user-card';
+  card.innerHTML = `
+    <img src="${memory.imagen}" alt="${memory.nombre}" class="card-image">
+    <h2 class="card-title">${memory.nombre}</h2>
+    <p class="card-description">${memory.caracteristicas.join(', ')}</p>
+    <div class="card-actions">
+      <button class="action-btn dislike">✖</button>
+      <button class="action-btn like">❤</button>
+      <button class="action-btn info">ℹ</button>
+    </div>
+  `;
+
+  cardContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar la nueva tarjeta
+  cardContainer.appendChild(card);
+
+  // Botones de acción
+  const dislikeBtn = card.querySelector('.dislike');
+  const likeBtn = card.querySelector('.like');
+  const infoBtn = card.querySelector('.info');
+
+  dislikeBtn.onclick = () => swipeCard(card, 'left');
+  likeBtn.onclick = () => swipeCard(card, 'right');
+  infoBtn.onclick = () => showModal(memory);
+}
+
+function swipeCard(card, direction) {
+  card.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
+  card.style.opacity = '0';
+  card.style.transform =
+    direction === 'right'
+      ? 'translateX(500px) rotate(20deg)'
+      : 'translateX(-500px) rotate(-20deg)';
+
+  // Esperar a que la animación termine antes de mostrar la siguiente tarjeta
+  card.addEventListener(
+    'transitionend',
+    () => {
+      currentIndex++;
+      showCard(currentIndex);
+    },
+    { once: true }
+  );
+}
+
 function showModal(memory) {
   modal.querySelector('.modal-img').src = memory.imagen;
   modal.querySelector('.modal-name').textContent = memory.nombre;
-  modal.querySelector('.modal-characteristics').textContent =
-    memory.caracteristicas && memory.caracteristicas.length
-      ? `Características: ${memory.caracteristicas.join(', ')}`
-      : '';
-  modal.querySelector('.modal-capacities').textContent =
-    memory.capacidades ? `Capacidades: ${memory.capacidades}` : '';
-  modal.querySelector('.modal-uses').textContent =
-    memory.usos ? `Usos: ${memory.usos}` : '';
-  modal.querySelector('.modal-others').textContent =
-    memory.otros ? `Otros: ${memory.otros}` : '';
-  modal.querySelector('.modal-assigned').textContent =
-    memory.asignado ? `Asignado a: ${memory.asignado}` : '';
+  modal.querySelector('.modal-characteristics').textContent = `Características: ${memory.caracteristicas.join(', ')}`;
+  modal.querySelector('.modal-capacities').textContent = `Capacidades: ${memory.capacidades}`;
+  modal.querySelector('.modal-uses').textContent = `Usos: ${memory.usos}`;
+  modal.querySelector('.modal-others').textContent = `Otros: ${memory.otros}`;
+
   modal.classList.add('show');
 }
 
@@ -42,115 +87,13 @@ modal.querySelector('.close-btn').onclick = () => {
 };
 
 async function loadMemories() {
-  const res = await fetch('src/memories/memories.json');
-  memories = await res.json();
-  showCard(currentIndex);
-}
-
-function showCard(index) {
-  cardContainer.innerHTML = '';
-  if (index >= memories.length) {
-    cardContainer.innerHTML = '<h2>No more profiles!</h2>';
-    return;
-  }
-
-  const memory = memories[index];
-  const card = document.createElement('div');
-  card.classList.add('user-card');
-
-  const img = document.createElement('img');
-  img.src = memory.imagen;
-  img.alt = memory.nombre;
-
-  const name = document.createElement('h2');
-  name.textContent = memory.nombre;
-
-  // Características resumidas en la carta
-  const characteristics = document.createElement('p');
-  characteristics.className = 'card-characteristics';
-  if (memory.caracteristicas && memory.caracteristicas.length) {
-    characteristics.textContent = memory.caracteristicas.slice(0, 2).join(', ');
-  }
-
-  const actions = document.createElement('div');
-  actions.className = 'card-actions';
-
-  const dislikeBtn = document.createElement('button');
-  dislikeBtn.className = 'action-btn dislike';
-  dislikeBtn.innerHTML = '✖';
-
-  const likeBtn = document.createElement('button');
-  likeBtn.className = 'action-btn like';
-  likeBtn.innerHTML = '❤';
-
-  const infoBtn = document.createElement('button');
-  infoBtn.className = 'action-btn info';
-  infoBtn.innerHTML = '<span class="info-icon">ℹ️</span>';
-
-  actions.appendChild(dislikeBtn);
-  actions.appendChild(likeBtn);
-  actions.appendChild(infoBtn);
-
-  card.appendChild(img);
-  card.appendChild(name);
-  if (characteristics.textContent) card.appendChild(characteristics);
-  card.appendChild(actions);
-  cardContainer.appendChild(card);
-
-  likeBtn.onclick = () => swipeCard(card, 'right');
-  dislikeBtn.onclick = () => swipeCard(card, 'left');
-  infoBtn.onclick = () => showModal(memory);
-
-  // Drag/swipe functionality
-  let startX = 0, currentX = 0, isDragging = false;
-
-  function onStart(e) {
-    isDragging = true;
-    startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-    card.style.transition = 'none';
-  }
-
-  function onMove(e) {
-    if (!isDragging) return;
-    currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-    let diffX = currentX - startX;
-    card.style.transform = `translateX(${diffX}px) rotate(${diffX/10}deg)`;
-  }
-
-  function onEnd(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    let diffX = currentX - startX;
-    card.style.transition = 'transform 0.3s';
-    if (diffX > 100) {
-      swipeCard(card, 'right');
-    } else if (diffX < -100) {
-      swipeCard(card, 'left');
-    } else {
-      card.style.transform = '';
-    }
-  }
-
-  card.addEventListener('mousedown', onStart);
-  card.addEventListener('touchstart', onStart);
-
-  document.addEventListener('mousemove', onMove);
-  document.addEventListener('touchmove', onMove);
-
-  document.addEventListener('mouseup', onEnd);
-  document.addEventListener('touchend', onEnd);
-}
-
-function swipeCard(card, direction) {
-  card.style.transition = 'transform 0.5s, opacity 0.5s';
-  card.style.opacity = '0';
-  card.style.transform = direction === 'right'
-    ? 'translateX(500px) rotate(30deg)'
-    : 'translateX(-500px) rotate(-30deg)';
-  setTimeout(() => {
-    currentIndex++;
+  try {
+    const response = await fetch('src/memories/memories.json');
+    memories = await response.json();
     showCard(currentIndex);
-  }, 350);
+  } catch (error) {
+    console.error('Error al cargar las memorias:', error);
+  }
 }
 
 loadMemories();
