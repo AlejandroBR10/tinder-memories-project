@@ -200,14 +200,7 @@ body {
     margin-top: 0.5rem;
 }
 
-footer {
-  background: #ff6a6a;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  border-radius: 24px 24px 0 0;
-}
+
 
 @media (max-width: 900px) {
   .about-main {

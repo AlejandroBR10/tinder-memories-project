@@ -19,66 +19,21 @@ modal.innerHTML = `
 `;
 document.body.appendChild(modal);
 
-function showCard(index) {
-  if (index >= memories.length) {
-    cardContainer.innerHTML = `<p class="no-more-cards">No hay más perfiles disponibles</p>`;
-    return;
-  }
-
-  const memory = memories[index];
-  const card = document.createElement('div');
-  card.className = 'user-card';
-  card.innerHTML = `
-    <img src="${memory.imagen}" alt="${memory.nombre}" class="card-image">
-    <h2 class="card-title">${memory.nombre}</h2>
-    <p class="card-description">${memory.caracteristicas.join(', ')}</p>
-    <div class="card-actions">
-      <button class="action-btn dislike">✖</button>
-      <button class="action-btn like">❤</button>
-      <button class="action-btn info">ℹ</button>
-    </div>
-  `;
-
-  cardContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar la nueva tarjeta
-  cardContainer.appendChild(card);
-
-  // Botones de acción
-  const dislikeBtn = card.querySelector('.dislike');
-  const likeBtn = card.querySelector('.like');
-  const infoBtn = card.querySelector('.info');
-
-  dislikeBtn.onclick = () => swipeCard(card, 'left');
-  likeBtn.onclick = () => swipeCard(card, 'right');
-  infoBtn.onclick = () => showModal(memory);
-}
-
-function swipeCard(card, direction) {
-  card.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
-  card.style.opacity = '0';
-  card.style.transform =
-    direction === 'right'
-      ? 'translateX(500px) rotate(20deg)'
-      : 'translateX(-500px) rotate(-20deg)';
-
-  // Esperar a que la animación termine antes de mostrar la siguiente tarjeta
-  card.addEventListener(
-    'transitionend',
-    () => {
-      currentIndex++;
-      showCard(currentIndex);
-    },
-    { once: true }
-  );
-}
-
 function showModal(memory) {
   modal.querySelector('.modal-img').src = memory.imagen;
   modal.querySelector('.modal-name').textContent = memory.nombre;
-  modal.querySelector('.modal-characteristics').textContent = `Características: ${memory.caracteristicas.join(', ')}`;
-  modal.querySelector('.modal-capacities').textContent = `Capacidades: ${memory.capacidades}`;
-  modal.querySelector('.modal-uses').textContent = `Usos: ${memory.usos}`;
-  modal.querySelector('.modal-others').textContent = `Otros: ${memory.otros}`;
-
+  modal.querySelector('.modal-characteristics').textContent =
+    memory.caracteristicas && memory.caracteristicas.length
+      ? `Características: ${memory.caracteristicas.join(', ')}`
+      : '';
+  modal.querySelector('.modal-capacities').textContent =
+    memory.capacidades ? `Capacidades: ${memory.capacidades}` : '';
+  modal.querySelector('.modal-uses').textContent =
+    memory.usos ? `Usos: ${memory.usos}` : '';
+  modal.querySelector('.modal-others').textContent =
+    memory.otros ? `Otros: ${memory.otros}` : '';
+  modal.querySelector('.modal-assigned').textContent =
+    memory.asignado ? `Asignado a: ${memory.asignado}` : '';
   modal.classList.add('show');
 }
 
@@ -87,9 +42,55 @@ modal.querySelector('.close-btn').onclick = () => {
 };
 
 async function loadMemories() {
-  const res = await fetch('src/memories/memories.json');
-  memories = await res.json();
-  showCard(currentIndex);
+  try {
+    const response = await fetch('src/memories/memories.json');
+    if (!response.ok) {
+      throw new Error(`Error al cargar el JSON: ${response.status}`);
+    }
+    memories = await response.json();
+
+    // Verificar si hay datos en el JSON
+    if (memories.length === 0) {
+      cardContainer.innerHTML = '<h2>No hay perfiles disponibles</h2>';
+      return;
+    }
+
+    // Mostrar la primera tarjeta
+    showCard(currentIndex);
+  } catch (error) {
+    console.error('Error al cargar las memorias:', error);
+    cardContainer.innerHTML = '<h2>Error al cargar los datos</h2>';
+  }
+}
+
+function showHeartAnimation(type) {
+  const heartAnimation = document.createElement('div');
+  heartAnimation.className = 'heart-animation';
+  heartAnimation.textContent = type;
+
+  // Estilo dinámico para la animación
+  heartAnimation.style.position = 'fixed';
+  heartAnimation.style.top = '50%';
+  heartAnimation.style.left = '50%';
+  heartAnimation.style.transform = 'translate(-50%, -50%)';
+  heartAnimation.style.fontSize = '4rem';
+  heartAnimation.style.color = type === '❤' ? '#ff6a6a' : '#555';
+  heartAnimation.style.opacity = '1';
+  heartAnimation.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+  heartAnimation.style.zIndex = '1000';
+
+  document.body.appendChild(heartAnimation);
+
+  // Animación de desvanecimiento y movimiento hacia arriba
+  setTimeout(() => {
+    heartAnimation.style.opacity = '0';
+    heartAnimation.style.transform = 'translate(-50%, -60%)';
+  }, 500);
+
+  // Eliminar el elemento después de la animación
+  setTimeout(() => {
+    heartAnimation.remove();
+  }, 1500);
 }
 
 function handleSwipe(memory, direction) {
@@ -109,19 +110,6 @@ function addToFavorites(memory) {
     favorites.push(memory);
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }
-}
-
-function showHeartAnimation(type) {
-  const heartAnimation = document.createElement('div');
-  heartAnimation.className = 'heart-animation';
-  heartAnimation.textContent = type;
-
-  document.body.appendChild(heartAnimation);
-
-  // Ocultar la animación después de 2 segundos
-  setTimeout(() => {
-    heartAnimation.remove();
-  }, 2000);
 }
 
 function showCard(index) {
@@ -235,9 +223,7 @@ function swipeCard(card, direction) {
   setTimeout(() => {
     currentIndex++;
     showCard(currentIndex);
-  } catch (error) {
-    console.error('Error al cargar las memorias:', error);
-  }
+  }, 350);
 }
 
 loadMemories();

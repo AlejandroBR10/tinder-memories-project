@@ -2,69 +2,54 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #ff6a6a 0%, #ffb86c 100%);
+  background: linear-gradient(135deg, #ff6a6a 0%, #ff8a5c 50%, #ffb86c 100%);
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-/* Navbar flotante y moderna */
+/* Navbar */
 .navbar {
-  width: 100vw;
-  max-width: 100vw;
-  background: linear-gradient(90deg, #ff6a6a 0%, #ffb86c 100%);
-  box-shadow: 0 4px 24px rgba(255,106,106,0.18);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.8rem 3vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  border-bottom-left-radius: 18px;
-  border-bottom-right-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #ff6a6a 0%, #ffb86c 100%);
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
 }
 
 .navbar-logo {
-  font-size: 2.1rem;
-  font-weight: bold;
-  color: #fff;
-  letter-spacing: 2px;
-  white-space: nowrap;
-}
-
-.navbar-links-wrapper {
-  display: flex;
-  align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
 }
 
 .navbar-links {
-  list-style: none;
-  display: flex;
-  gap: 2.5rem;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-links li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.15rem;
-  font-weight: 500;
-  padding: 0.5rem 1.3rem;
-  border-radius: 20px;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  background: transparent;
-  box-shadow: none;
-  border: 2px solid transparent;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
 }
 
 .navbar-links li a:hover {
-  background: #fff;
-  color: #ff6a6a;
-  box-shadow: 0 2px 8px rgba(255,106,106,0.10);
-  border: 2px solid #ffb86c;
+    background: rgba(255,255,255,0.2);
+    color: #ff4500;
 }
 
 /* Espacio debajo de la navbar flotante */
@@ -298,18 +283,7 @@ body {
 }
 
 /* Footer separado y elegante */
-.footer {
-  background: rgba(255,255,255,0.92);
-  text-align: center;
-  padding: 1.2rem 0;
-  font-size: 1rem;
-  color: #ff6a6a;
-  box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
-  border-radius: 24px;
-  width: 100%;
-  max-width: 700px;
-  margin: 2.5rem auto 0 auto;
-}
+
 
 /* Responsive */
 @media (max-width: 950px) {
@@ -376,4 +350,15 @@ body {
   .card-container {
     padding: 0.5rem;
   }
+}
+/* Footer separado y elegante */
+/* Footer separado y elegante */
+footer {
+  background: #ff6a6a;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 24px 24px 0 0;
+  margin-top: 10%;
 }
