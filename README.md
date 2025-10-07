@@ -245,3 +245,34 @@ En el navegador, usando `localStorage`. No se comparten entre dispositivos.
 Sí, es de uso libre para fines educativos y personales.
 
 ---
+
+## Vistas de la Aplicación
+
+A continuación se muestran ejemplos visuales de las principales páginas de ROMantic. Las imágenes se encuentran en la carpeta [`src/assets/images/`](src/assets/images/).
+
+### Página de Inicio
+
+![Página de Inicio](src/assets/images/paginaInicio.png)
+
+---
+
+### Página de Favoritos
+
+![Página de Favoritos](src/assets/images/paginaFavoritos.png)
+
+---
+
+### Página de Memorias (Exploración)
+
+![Página de Memorias](src/assets/images/paginaMemorias.png)
+
+---
+
+### Página de Perfil
+
+![Página de Perfil](src/assets/images/paginaPerfil1.png)
+![Otra vista de Perfil](src/assets/images/paginaPerfil2.png)
+
+---
+
+### Página Acerca de
