@@ -12,7 +12,7 @@
     "capacidades": "Desde 1GB hasta 120GB por modulo en sistemas modernos, frecuencias desde 2400mhz hasta 6000mhz+",
     "usos": "Almacenamiento termporal de datos y programas en ejecucion, caché del sistema operativo, procesamiento de datos en tiempo real",
     "otros": "Tipos principales: DDR4, DDR5. Requiere refrescos constantes para mantener los datos",
-    "imagen": "ram.png",
+    "imagen": "src/assets/images/ram.png",
     "asignado": "Alan"
   },
   {
@@ -28,7 +28,7 @@
     "capacidades": "Velocidades de transferencia de 800MHz a 1600MHz, capacidades típicas de 64MB a 512MB por módulo",
     "usos": "Consolas de videojuegos (Nintendo 64, PlayStation 2), workstations de alto rendimiento, sistemas especializados",
     "otros": "Tecnología desarrollada por Rambus Inc., mayor costo de producción que la RAM convencional",
-    "imagen": "rdram.png",
+    "imagen": "src/assets/images/rdram.png",
     "asignado": "Alan"
   },
   {
@@ -44,7 +44,7 @@
     "capacidades": "Típicamente desde 256 bytes hasta 1MB, ciclos de escritura limitados (100,000 a 1,000,000)",
     "usos": "Almacenamiento de configuraciones de BIOS, firmware de dispositivos, configuraciones de red, calibración de sensores",
     "otros": "Vida útil de 10 años o más para retención de datos, proceso de escritura más lento que RAM",
-    "imagen": "eeprom.png",
+    "imagen": "src/assets/images/eeprom.png",
     "asignado": "Alan"
   },
   {
@@ -58,7 +58,7 @@
     "capacidades": "Desde 1MB hasta varios GB por chip",
     "usos": "Memoria principal en PCs, laptops y servidores",
     "otros": "Es más barata que SRAM y se usa en la mayoría de computadoras",
-    "imagen": "src/images/.png",
+    "imagen": "src/assets/images/dram.png",
     "asignado": "Ale"
   },
   {
@@ -72,7 +72,7 @@
     "capacidades": "Desde KB hasta varios MB por chip",
     "usos": "Caché de CPU, memoria de alta velocidad en routers y dispositivos integrados",
     "otros": "Se utiliza donde se necesita rapidez y baja latencia",
-    "imagen": "sram.png",
+    "imagen": "src/assets/images/sram.png",
     "asignado": "Ale"
   },
   {

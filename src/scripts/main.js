@@ -47,6 +47,38 @@ async function loadMemories() {
   showCard(currentIndex);
 }
 
+function handleSwipe(memory, direction) {
+  if (direction === 'right') {
+    addToFavorites(memory); // Agregar a favoritos
+    showHeartAnimation('❤'); // Mostrar animación de corazón
+  } else if (direction === 'left') {
+    showHeartAnimation('💔'); // Mostrar animación de corazón roto
+  }
+}
+
+function addToFavorites(memory) {
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const isFavorite = favorites.some((fav) => fav.id === memory.id);
+
+  if (!isFavorite) {
+    favorites.push(memory);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+}
+
+function showHeartAnimation(type) {
+  const heartAnimation = document.createElement('div');
+  heartAnimation.className = 'heart-animation';
+  heartAnimation.textContent = type;
+
+  document.body.appendChild(heartAnimation);
+
+  // Ocultar la animación después de 2 segundos
+  setTimeout(() => {
+    heartAnimation.remove();
+  }, 2000);
+}
+
 function showCard(index) {
   cardContainer.innerHTML = '';
   if (index >= memories.length) {
@@ -65,7 +97,6 @@ function showCard(index) {
   const name = document.createElement('h2');
   name.textContent = memory.nombre;
 
-  // Características resumidas en la carta
   const characteristics = document.createElement('p');
   characteristics.className = 'card-characteristics';
   if (memory.caracteristicas && memory.caracteristicas.length) {
@@ -97,8 +128,17 @@ function showCard(index) {
   card.appendChild(actions);
   cardContainer.appendChild(card);
 
-  likeBtn.onclick = () => swipeCard(card, 'right');
-  dislikeBtn.onclick = () => swipeCard(card, 'left');
+  // Configurar eventos dinámicamente para cada botón
+  likeBtn.onclick = () => {
+    handleSwipe(memory, 'right'); // Swipe hacia la derecha
+    swipeCard(card, 'right');
+  };
+
+  dislikeBtn.onclick = () => {
+    handleSwipe(memory, 'left'); // Swipe hacia la izquierda
+    swipeCard(card, 'left');
+  };
+
   infoBtn.onclick = () => showModal(memory);
 
   // Drag/swipe functionality
@@ -114,7 +154,7 @@ function showCard(index) {
     if (!isDragging) return;
     currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
     let diffX = currentX - startX;
-    card.style.transform = `translateX(${diffX}px) rotate(${diffX/10}deg)`;
+    card.style.transform = `translateX(${diffX}px) rotate(${diffX / 10}deg)`;
   }
 
   function onEnd(e) {
