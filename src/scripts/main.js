@@ -142,7 +142,8 @@ function showCard(index) {
 }
 
 function swipeCard(card, direction) {
-  card.style.transition = 'transform 0.5s';
+  card.style.transition = 'transform 0.5s, opacity 0.5s';
+  card.style.opacity = '0';
   card.style.transform = direction === 'right'
     ? 'translateX(500px) rotate(30deg)'
     : 'translateX(-500px) rotate(-30deg)';

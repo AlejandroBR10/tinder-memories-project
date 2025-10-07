@@ -40,7 +40,7 @@
     "capacidades": "Desde 1MB hasta varios GB por chip",
     "usos": "Memoria principal en PCs, laptops y servidores",
     "otros": "Es más barata que SRAM y se usa en la mayoría de computadoras",
-    "imagen": "src/images/.png",
+    "imagen": "src/assets/images/dram.png",
     "asignado": "Ale"
   },
   {
@@ -54,7 +54,7 @@
     "capacidades": "Desde KB hasta varios MB por chip",
     "usos": "Caché de CPU, memoria de alta velocidad en routers y dispositivos integrados",
     "otros": "Se utiliza donde se necesita rapidez y baja latencia",
-    "imagen": "sram.png",
+    "imagen": "src/assets/images/sram.png",
     "asignado": "Ale"
   },
   {
