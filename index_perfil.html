@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil - Memories Tinder</title>
+  <link rel="stylesheet" href="src/styles/perfil.css">
+</head>
+
+<body>
+  <div class="main-interface">
+    <!-- Aquí irá tu navbar -->
+    <nav class="navbar">
+      <div class="navbar-logo">Memories Tinder</div>
+      <div class="navbar-links-wrapper">
+        <ul class="navbar-links">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Memorias</a></li>
+          <li><a href="#">Favoritos</a></li>
+          <li><a href="#">Acerca</a></li>
+          <li><a href="index_perfil.html" class="active">Perfil</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Contenedor del perfil -->
+    <div class="profile-container">
+
+      <!-- Sección principal con foto y nombre -->
+      <div class="profile-hero">
+        <div class="hero-image" style="background-image: url('src/assets/images/profile_foto_principal.png');">
+          <div class="hero-overlay">
+            <div class="hero-info">
+              <h1 class="hero-name">María González</h1>
+              <p class="hero-age">22 años</p>
+              <p class="hero-location">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+                Celaya, Guanajuato
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Galería de fotos -->
+      <div class="profile-section">
+        <div class="section-header">
+          <h2>Galería</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item" style="background-image: url('src/assets/images/imgsecundaria1.jpg');">
+          </div>
+          <div class="gallery-item" style="background-image: url('src/assets/images/imgsecundaria2.jpg');">
+          </div>
+          <div class="gallery-item" style="background-image: url('src/assets/images/imgsecundaria3.jpg');">
+          </div>
+          <div class="gallery-item" style="background-image: url('src/assets/images/imgsecundaria4.jpg');">
+          </div>
+          <div class="gallery-item" style="background-image: url('src/assets/images/imgsecundaria5.jpg');">
+          </div>
+          <div class="gallery-item" style="background-image: url('src/assets/images/imgsecundaria6.jpg');">
+          </div>
+        </div>
+      </div>
+
+      <!-- Sobre mí -->
+      <div class="profile-section">
+        <div class="section-header">
+          <h2>Sobre mí</h2>
+        </div>
+        <p class="bio-text">
+          Amante de los viajes, la fotografía y el buen café :) Siempre buscando nuevas aventuras y momentos
+          inolvidables. Me encanta conocer gente nueva y compartir experiencias.
+          <br><br>
+          "La vida es demasiado corta para no vivirla al máximo"
+        </p>
+      </div>
+
+      <!-- Intereses -->
+      <div class="profile-section">
+        <div class="section-header">
+          <h2>Intereses</h2>
+        </div>
+
+        <div class="interests-display">
+          <div class="interest-badge">
+            <span class="interest-icon">✈️</span>
+            <span class="interest-name">Viajes</span>
+          </div>
+          <div class="interest-badge">
+            <span class="interest-icon">📷</span>
+            <span class="interest-name">Fotografía</span>
+          </div>
+          <div class="interest-badge">
+            <span class="interest-icon">🍕</span>
+            <span class="interest-name">Gastronomía</span>
+          </div>
+          <div class="interest-badge">
+            <span class="interest-icon">🌲</span>
+            <span class="interest-name">Naturaleza</span>
+          </div>
+          <div class="interest-badge">
+            <span class="interest-icon">⚽</span>
+            <span class="interest-name">Deportes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información básica -->
+      <div class="profile-section">
+        <div class="section-header">
+          <h2>Información básica</h2>
+        </div>
+
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-icon">🎓</div>
+            <div class="info-content">
+              <div class="info-label">Educación</div>
+              <div class="info-value">Universidad De Salamanca</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">💼</div>
+            <div class="info-content">
+              <div class="info-label">Trabajo</div>
+              <div class="info-value">Diseñadora Gráfica</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📏</div>
+            <div class="info-content">
+              <div class="info-label">Altura</div>
+              <div class="info-value">165 cm</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">🏋️</div>
+            <div class="info-content">
+              <div class="info-label">Estilo de vida</div>
+              <div class="info-value">Activo</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">🚬</div>
+            <div class="info-content">
+              <div class="info-label">Fumo</div>
+              <div class="info-value">No fumo</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">🍷</div>
+            <div class="info-content">
+              <div class="info-label">Bebo</div>
+              <div class="info-value">Si</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">🐶</div>
+            <div class="info-content">
+              <div class="info-label">Mascotas</div>
+              <div class="info-value">Tengo un perro</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">⭐</div>
+            <div class="info-content">
+              <div class="info-label">Signo zodiacal</div>
+              <div class="info-value">Leo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lo que busco -->
+      <div class="profile-section">
+        <div class="section-header">
+          <h2>Lo que busco</h2>
+        </div>
+        <p class="bio-text">
+          Busco conocer una memoria con buena capacidad, rendimiento y que aguante el trabajo duro, si es que sabe a qué
+          me refiero.
+          🤭🥵 </p>
+      </div>
+
+      <!-- Spotify / Música favorita -->
+      <div class="profile-section">
+        <div class="section-header">
+          <h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#1DB954"
+              style="vertical-align: middle; margin-right: 8px;">
+              <path
+                d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+            </svg>
+            Artistas favoritos
+          </h2>
+        </div>
+        <div class="artists-grid">
+          <div class="artist-card">
+            <div class="artist-image" style="background-image: url('src/assets/images/daftpunk.jpg');"></div>
+            <div class="artist-name">Daft Punk</div>
+          </div>
+          <div class="artist-card">
+            <div class="artist-image" style="background-image: url('src/assets/images/radiohead.jpeg');"></div>
+            <div class="artist-name">Radiohead</div>
+          </div>
+          <div class="artist-card">
+            <div class="artist-image" style="background-image: url('src/assets/images/hectorelfather.jpg');"></div>
+            <div class="artist-name">Hector el father</div>
+          </div>
+
+          <div class="artist-card">
+            <div class="artist-image" style="background-image: url('src/assets/images/themarias.png');"></div>
+            <div class="artist-name">The Marias</div>
+          </div>
+          <div class="artist-card">
+            <div class="artist-image" style="background-image: url('src/assets/images/metroboomin.jpg');"></div>
+            <div class="artist-name">Metro Boomin</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Memories Tinder</p>
+    </footer>
+  </div>
+
+  <script src="src/scripts/main_perfil.js"></script>
+</body>
+
+</html>
