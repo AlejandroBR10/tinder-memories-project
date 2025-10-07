@@ -58,7 +58,11 @@
     "capacidades": "Desde 1MB hasta varios GB por chip",
     "usos": "Memoria principal en PCs, laptops y servidores",
     "otros": "Es más barata que SRAM y se usa en la mayoría de computadoras",
+<<<<<<< HEAD
     "imagen": "src/assets/images/cache.png",
+=======
+    "imagen": "src/assets/images/dram.png",
+>>>>>>> cde17ca3de5e3a8b7511c85374365c306401a5c9
     "asignado": "Ale"
   },
   {

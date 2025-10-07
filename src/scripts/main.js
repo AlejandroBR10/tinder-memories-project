@@ -87,9 +87,153 @@ modal.querySelector('.close-btn').onclick = () => {
 };
 
 async function loadMemories() {
-  try {
-    const response = await fetch('src/memories/memories.json');
-    memories = await response.json();
+  const res = await fetch('src/memories/memories.json');
+  memories = await res.json();
+  showCard(currentIndex);
+}
+
+function handleSwipe(memory, direction) {
+  if (direction === 'right') {
+    addToFavorites(memory); // Agregar a favoritos
+    showHeartAnimation('❤'); // Mostrar animación de corazón
+  } else if (direction === 'left') {
+    showHeartAnimation('💔'); // Mostrar animación de corazón roto
+  }
+}
+
+function addToFavorites(memory) {
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const isFavorite = favorites.some((fav) => fav.id === memory.id);
+
+  if (!isFavorite) {
+    favorites.push(memory);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+}
+
+function showHeartAnimation(type) {
+  const heartAnimation = document.createElement('div');
+  heartAnimation.className = 'heart-animation';
+  heartAnimation.textContent = type;
+
+  document.body.appendChild(heartAnimation);
+
+  // Ocultar la animación después de 2 segundos
+  setTimeout(() => {
+    heartAnimation.remove();
+  }, 2000);
+}
+
+function showCard(index) {
+  cardContainer.innerHTML = '';
+  if (index >= memories.length) {
+    cardContainer.innerHTML = '<h2>No more profiles!</h2>';
+    return;
+  }
+
+  const memory = memories[index];
+  const card = document.createElement('div');
+  card.classList.add('user-card');
+
+  const img = document.createElement('img');
+  img.src = memory.imagen;
+  img.alt = memory.nombre;
+
+  const name = document.createElement('h2');
+  name.textContent = memory.nombre;
+
+  const characteristics = document.createElement('p');
+  characteristics.className = 'card-characteristics';
+  if (memory.caracteristicas && memory.caracteristicas.length) {
+    characteristics.textContent = memory.caracteristicas.slice(0, 2).join(', ');
+  }
+
+  const actions = document.createElement('div');
+  actions.className = 'card-actions';
+
+  const dislikeBtn = document.createElement('button');
+  dislikeBtn.className = 'action-btn dislike';
+  dislikeBtn.innerHTML = '✖';
+
+  const likeBtn = document.createElement('button');
+  likeBtn.className = 'action-btn like';
+  likeBtn.innerHTML = '❤';
+
+  const infoBtn = document.createElement('button');
+  infoBtn.className = 'action-btn info';
+  infoBtn.innerHTML = '<span class="info-icon">ℹ️</span>';
+
+  actions.appendChild(dislikeBtn);
+  actions.appendChild(likeBtn);
+  actions.appendChild(infoBtn);
+
+  card.appendChild(img);
+  card.appendChild(name);
+  if (characteristics.textContent) card.appendChild(characteristics);
+  card.appendChild(actions);
+  cardContainer.appendChild(card);
+
+  // Configurar eventos dinámicamente para cada botón
+  likeBtn.onclick = () => {
+    handleSwipe(memory, 'right'); // Swipe hacia la derecha
+    swipeCard(card, 'right');
+  };
+
+  dislikeBtn.onclick = () => {
+    handleSwipe(memory, 'left'); // Swipe hacia la izquierda
+    swipeCard(card, 'left');
+  };
+
+  infoBtn.onclick = () => showModal(memory);
+
+  // Drag/swipe functionality
+  let startX = 0, currentX = 0, isDragging = false;
+
+  function onStart(e) {
+    isDragging = true;
+    startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+    card.style.transition = 'none';
+  }
+
+  function onMove(e) {
+    if (!isDragging) return;
+    currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+    let diffX = currentX - startX;
+    card.style.transform = `translateX(${diffX}px) rotate(${diffX / 10}deg)`;
+  }
+
+  function onEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    let diffX = currentX - startX;
+    card.style.transition = 'transform 0.3s';
+    if (diffX > 100) {
+      swipeCard(card, 'right');
+    } else if (diffX < -100) {
+      swipeCard(card, 'left');
+    } else {
+      card.style.transform = '';
+    }
+  }
+
+  card.addEventListener('mousedown', onStart);
+  card.addEventListener('touchstart', onStart);
+
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('touchmove', onMove);
+
+  document.addEventListener('mouseup', onEnd);
+  document.addEventListener('touchend', onEnd);
+}
+
+function swipeCard(card, direction) {
+  card.style.transition = 'transform 0.5s, opacity 0.5s';
+  card.style.opacity = '0';
+  card.style.transform = direction === 'right'
+    ? 'translateX(500px) rotate(30deg)'
+    : 'translateX(-500px) rotate(-30deg)';
+  setTimeout(() => {
+    currentIndex++;
     showCard(currentIndex);
   } catch (error) {
     console.error('Error al cargar las memorias:', error);
