@@ -7,7 +7,7 @@ body {
   box-sizing: border-box;
 }
 
-/* Navbar flotante y moderna */
+/* Navbar mejorada y responsiva */
 .navbar {
   width: 100vw;
   max-width: 100vw;
@@ -31,20 +31,25 @@ body {
   color: #fff;
   letter-spacing: 2px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .navbar-links-wrapper {
   display: flex;
   align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 2.5rem;
+  gap: 2.2rem;
   margin: 0;
   padding: 0;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .navbar-links li a {
@@ -52,12 +57,14 @@ body {
   color: #fff;
   font-size: 1.15rem;
   font-weight: 500;
-  padding: 0.5rem 1.3rem;
+  padding: 0.5rem 1.1rem;
   border-radius: 20px;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   background: transparent;
   box-shadow: none;
   border: 2px solid transparent;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .navbar-links li a:hover {
